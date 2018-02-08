@@ -13,6 +13,11 @@ public class MyWeightingModel extends WeightingModel
 	public String getInfo() { return this.getClass().getSimpleName(); }
 	
 	public double score(double tf, double docLength) {
+		double N = numberOfDocuments;
+		double D = documentFrequency;
+		double idf = Math.log((N - D + 0.5) / (D + 0.5));
+		return tf * idf;
+
 		//you should implement this method to return a score for a term occurring tf times in a document of docLength tokens.
 
 		//you may assume access to the following member variables of the superclass:
@@ -22,8 +27,6 @@ public class MyWeightingModel extends WeightingModel
    		//termFrequency (The frequency of the term in the collection)
    		//numberOfDocuments (The number of documents in the collection)
    		//numberOfTokens (the total length of all documents in the collection)
-
-		return 0d;
 	}
 
 	/** This method is not required, and you are not expected to implement it */
